@@ -20,13 +20,15 @@ class Details extends Component {
     return (
       <div>
         <h1>name: {this.props.pname}</h1>
-        <button onClick={this.cn}> Change Name </button>
-        <button onClick={this.dn}> Delete Name </button>
+        <button onClick={this.cn}> Change Name with "Connect"</button>
+        <button onClick={this.dn}> Delete Name with "Connect</button>
       </div>
     );
   }
 }
 
+//mapDispatchToProps is creating an object with different dispatches as the items of this object
+//key names will be function names in the props. So "changeName" can be used as "this.props.changeName(arg)"
 const mapDispatchToProps = dispatch => {
   return {
     changeName: newName => {
@@ -40,6 +42,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   console.log(state);
+  // props name cane be anything, I used "pname"
+  //Gotchas:  Note the "nameReducer" part in "state.nameReducer.name"
   return { pname: state.nameReducer.name };
 };
 
